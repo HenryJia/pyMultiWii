@@ -87,15 +87,15 @@ class MultiWii:
         try:
             self.ser.open()
             if self.PRINT:
-                print "Waking up board on "+self.ser.port+"..."
+                print("Waking up board on "+self.ser.port+"...")
             for i in range(1,wakeup):
                 if self.PRINT:
-                    print wakeup-i
+                    print(wakeup-i)
                     time.sleep(1)
                 else:
                     time.sleep(1)
         except Exception, error:
-            print "\n\nError opening "+self.ser.port+" port.\n"+str(error)+"\n\n"
+            print("\n\nError opening "+self.ser.port+" port.\n"+str(error)+"\n\n")
 
     """Function for sending a command to the board"""
     def sendCMD(self, data_length, code, data):
@@ -192,7 +192,7 @@ class MultiWii:
         for i in np.arange(1,len(pd),2):
             nd.append(pd[i]+pd[i+1]*256)
         data = pd
-        print "PID sending:",data
+        print("PID sending:",data)
         self.sendCMD(30,MultiWii.SET_PID,data)
         self.sendCMD(0,MultiWii.EEPROM_WRITE,[])
 
@@ -376,4 +376,5 @@ class MultiWii:
             else:
                 return "No return error!"
         except Exception, error:
-            print error
+            print(error)
+
